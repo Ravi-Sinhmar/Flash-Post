@@ -66,16 +66,29 @@ Flash Post is a powerful automation tool designed to streamline the process of u
    - Create a `.env` file in the root directory.
    - Add the following variables:
      ```
-     MONGODB_URI=your_mongodb_connection_string
-     FACEBOOK_APP_ID=your_facebook_app_id
-     FACEBOOK_APP_SECRET=your_facebook_app_secret
-     INSTAGRAM_APP_ID=your_instagram_app_id
-     INSTAGRAM_APP_SECRET=your_instagram_app_secret
-     GOOGLE_CLIENT_ID=your_google_client_id
-     GOOGLE_CLIENT_SECRET=your_google_client_secret
-     AWS_ACCESS_KEY_ID=your_aws_access_key
-     AWS_SECRET_ACCESS_KEY=your_aws_secret_key
-     AWS_S3_BUCKET_NAME=your_s3_bucket_name
+     NODE_ENV = "DEV"
+LOCAL_PORT = 3000
+REMOTE_DB_STR = mongodb+srv://{username}:{password}@cluster0.bsrjbs4.mongodb.net/sample_mflix?
+JWT_SECRET=your_jwt_secret_key
+EMAIL_USER=example@gmail.com
+EMAIL_PASS=ksdk kdkd ksld jdhf     // sample
+DOMAIN = https://f322-185-107-56-129.ngrok-free.app   
+
+# Instagram Credentials // sample
+INSTAGRAM_APP_ID = "834543949125892349" 
+INSTAGRAM_APP_SECRET = "eaksfd93485ad8fsf8df8df9s9" 
+INSTAGRAM_REDIRECT_URI ="https://f322-185-107-56-129.ngrok-free.app/auth/instagram/callback"  // insta will only work on https
+INSTAGRAM_GRAPH_BASE_URL = "https://graph.instagram.com"
+INSTAGRAM_SESSION_SECRET = "SECRET"
+INSTAGRAM_SCOPEs = 'instagram_business_basic,instagram_business_content_publish,instagram_business_manage_messages,instagram_business_manage_comments'
+INSTAGRAM_APP_ACCESS_TOKEN = "39285793475983849|eaksfd93485ad8fsf8df8df9s9"
+
+# Facebook Credentials // sapmple
+Facebook_APP_ID = '153793475949395489'
+Facebook_APP_SECRET = 'sdk3587fhdh93589sdjf5348385hsdf'
+Facebook_REDIRECT_URI = "http://localhost:3000/auth/facebook/callback"
+Facebook_GRAPH_BASE_URL = "https://graph.facebook.com/983475394598345783"
+Facebook_SCOPE = ["email", "pages_read_engagement", "pages_manage_posts"]
      ```
 5. Start the server:
    ```bash
