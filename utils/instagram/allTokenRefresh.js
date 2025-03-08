@@ -28,6 +28,9 @@ const allTokenRefresh = async () => {
 const forceAllTokenRefresh = async () => {
   try {
     const users = await User.find({});
+    if(!users.length){
+      return console.log("NO Users Available");
+    }
     for (const user of users) {
       await limiter.removeTokens(1);
       await forceTokenRefresh(user);

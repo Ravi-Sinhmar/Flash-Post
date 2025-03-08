@@ -25,4 +25,4 @@ UserSchema.methods.isTokenOlderEnough = function () {
   return diffHours >= 25; // Return true if 25 hours have passed
 };
 
-module.exports = mongoose.model('data_final9', UserSchema);
+module.exports = mongoose.model('last', UserSchema);

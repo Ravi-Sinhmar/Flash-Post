@@ -26,10 +26,10 @@ const refreshTokenIfNeed = async (user) => {
       }
     } catch (error) {
       console.error(
-        "Error refreshing token for user",
+        "Error refreshing token for ",
         user.uid,
-        ":",
-        error.response?.data || error.message
+        ": :",
+        error
       );
     }
   };
@@ -37,13 +37,15 @@ const refreshTokenIfNeed = async (user) => {
 
   const forceTokenRefresh = async (user) => {
     try {
+      console.log("Forcing tokens")
       if (!user || !user.accessToken) {
         console.error("User or access token not found.");
         return;
       }
+      console.log("Tokens",user.accessToken);
           if(user.isTokenOlderEnough()){
         const accessToken = user.accessToken;
-        console.log("Previous Token for user", user.uid, ":", accessToken);
+        console.log("Previous Token for user old if", user.uid, ":", accessToken);
         const refreshResponse = await axios.get(
           "https://graph.instagram.com/refresh_access_token",
           {
@@ -54,19 +56,21 @@ const refreshTokenIfNeed = async (user) => {
           }
         );
         const newAccessToken = refreshResponse.data.access_token;
+        console.log("New",newAccessToken);
         // const expiresIn = refreshResponse.data.expires_in; 
         // const expiresInDays = (expiresIn / 86400).toFixed(2); 
         user.accessToken = newAccessToken;
         user.lastRefresh = new Date(); 
         await user.save();
           }else{
-            console.log("No need to Refresh token, Already New");
+            console.log("No need to Refresh token, Already New Stop");
+            
           }
     } catch (error) {
       console.error(
         "Error refreshing token for user",
         user.uid,
-        ":",
+        ": :",
         error.response?.data || error.message
       );
     }
